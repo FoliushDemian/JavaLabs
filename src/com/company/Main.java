@@ -6,6 +6,7 @@ public class Main {
         Pharmacy arta = new Pharmacy();
         MedicineBox Validol = new MedicineBox();
         Medicine validol = new Medicine();
+        System.out.println("hello world");
 
 
     }
