@@ -1,5 +1,5 @@
-package manager;
-import model.MedicineBox;
+package com.company.manager;
+import com.company.model.MedicineBox;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;

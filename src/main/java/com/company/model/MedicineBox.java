@@ -1,4 +1,4 @@
-package model;
+package com.company.model;
 import lombok.Data;
 
 @Data

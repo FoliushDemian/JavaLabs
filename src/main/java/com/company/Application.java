@@ -1,6 +1,6 @@
 package com.company;
-import manager.PharmacyManager;
-import model.MedicineBox;
+import com.company.manager.PharmacyManager;
+import com.company.model.MedicineBox;
 
 import java.util.ArrayList;
 import java.util.List;
