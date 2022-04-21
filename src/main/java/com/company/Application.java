@@ -32,16 +32,16 @@ public class Application {
         (manager.findMedicineByCategory(medicineBoxes, MedicineBox.TreatmentCategory.ANTIBIOTICS)).forEach(System.out::println);
         System.out.println();
 
-        List<MedicineBox> medicineBoxesListFoundedByRange = manager.findMedicineInRange(0, 70.1, medicineBoxes);
-        medicineBoxesListFoundedByRange.forEach(System.out::println);
-        System.out.println();
+//        List<MedicineBox> medicineBoxesListFoundedByRange = manager.findMedicineInRange(0, 70.1, medicineBoxes);
+//        medicineBoxesListFoundedByRange.forEach(System.out::println);
+//        System.out.println();
 
-        (manager.sortByNumberOfPackInBox(medicineBoxes, false)).forEach(System.out::println);
-        System.out.println();
+//        (manager.sortByNumberOfPackInBox(medicineBoxes, true)).forEach(System.out::println);
+//        System.out.println();
 
-        List<MedicineBox> medicineBoxesSortedByPriceInUahPerPackage = manager.sortByPriceInUahPerPackage(medicineBoxes,
-                true);
-        medicineBoxesSortedByPriceInUahPerPackage.forEach(System.out::println);
+//        List<MedicineBox> medicineBoxesSortedByPriceInUahPerPackage = manager.sortByPriceInUahPerPackage(medicineBoxes,
+//                true);
+//        medicineBoxesSortedByPriceInUahPerPackage.forEach(System.out::println);
 
     }
 }
