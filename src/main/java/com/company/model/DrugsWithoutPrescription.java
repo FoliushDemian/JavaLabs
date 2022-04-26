@@ -10,4 +10,14 @@ public class DrugsWithoutPrescription extends Medicine{
                                     Integer numberOfTabletsInPackage){
         super(nameOfMedicine, origin, treatmentCategory, priceInUahPerPackage, numberOfTabletsInPackage);
     }
+
+    @Override
+    public String getHeaders(){
+        return super.getHeaders() + ", permission required";
+    }
+
+    @Override
+    public String toCSV(){
+        return super.toCSV() + "," + this.permissionRequired;
+    }
 }

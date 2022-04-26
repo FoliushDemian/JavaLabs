@@ -10,4 +10,13 @@ public class Medicine {
     private TreatmentCategory treatmentCategory;
     private double priceInUahPerPackage;
     private Integer numberOfTabletsInPackage;
+
+    public String getHeaders(){
+        return "Name, Origin, Treatment Category, Price, Numbers of Tablets";
+    }
+
+    public String toCSV(){
+        return this.getNameOfMedicine() + "," + this.getOrigin() + "," + this.getTreatmentCategory() + "," +
+                this.getPriceInUahPerPackage() + "," + this.getNumberOfTabletsInPackage();
+    }
 }

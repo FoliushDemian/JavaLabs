@@ -2,7 +2,7 @@ package com.company.model;
 
 public class PrescriptionDrugs extends Medicine{
 
-     private boolean permissionRequired = true;
+    private boolean permissionRequired = true;
 
     public PrescriptionDrugs(String nameOfMedicine, String origin,
                               TreatmentCategory treatmentCategory,
@@ -11,5 +11,13 @@ public class PrescriptionDrugs extends Medicine{
         super(nameOfMedicine, origin, treatmentCategory, priceInUahPerPackage, numberOfTabletsInPackage);
     }
 
+    @Override
+    public String getHeaders(){
+        return super.getHeaders() + ", permission required";
+    }
 
+    @Override
+    public String toCSV(){
+        return super.toCSV() + "," + this.permissionRequired;
+    }
 }

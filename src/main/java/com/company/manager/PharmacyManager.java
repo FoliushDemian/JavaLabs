@@ -22,8 +22,8 @@ public class PharmacyManager {
      public List<MedicineBox> findMedicineInRange(double lowRange, double highRange, List<MedicineBox> medicineBoxes) {
           return medicineBoxes
                   .stream()
-                  .filter(medicineBox -> (medicineBox.getMedicine().getPriceInUahPerPackage() >= lowRange &&
-                          medicineBox.getMedicine().getPriceInUahPerPackage() <= highRange))
+                  .filter(medicineBox -> medicineBox.getMedicine().getPriceInUahPerPackage() >= lowRange &&
+                          medicineBox.getMedicine().getPriceInUahPerPackage() <= highRange)
                   .collect(Collectors.toList());
      }
 
