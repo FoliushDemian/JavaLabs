@@ -1,17 +1,20 @@
 package com.company.manager;
 
 import com.company.model.*;
-import org.junit.jupiter.api.Assertions;
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 class PharmacyManagerTest {
@@ -65,63 +68,30 @@ class PharmacyManagerTest {
     }
 
     @Test
-    void testSortByNumberOfTabletsInPackageAsc(){
+    public void testSortByNumberOfTabletsInPackageAsc(){
+
         PharmacyManager manager = new PharmacyManager();
         List<MedicineBox> actualMedicineBoxSortedByNumberOfTabletsInPackage = manager.sortByNumberOfTabletsInPackage(
                 medicineBoxes, false);
-
-        assertEquals(5, actualMedicineBoxSortedByNumberOfTabletsInPackage.size());
-
-        assertEquals(100, actualMedicineBoxSortedByNumberOfTabletsInPackage.get(0)
-                .getMedicine().getNumberOfTabletsInPackage());
-        assertEquals("PenichulinBox", actualMedicineBoxSortedByNumberOfTabletsInPackage.get(0)
-                .getMedicine().getNameOfMedicine());
-
-        assertEquals(200, actualMedicineBoxSortedByNumberOfTabletsInPackage.get(1)
-                .getMedicine().getNumberOfTabletsInPackage());
-        assertEquals("AscorbinkaBox", actualMedicineBoxSortedByNumberOfTabletsInPackage.get(1)
-                .getMedicine().getNameOfMedicine());
-
-        assertEquals(300, actualMedicineBoxSortedByNumberOfTabletsInPackage.get(2)
-                .getMedicine().getNumberOfTabletsInPackage());
-        assertEquals("GrupicutronBox", actualMedicineBoxSortedByNumberOfTabletsInPackage.get(2)
-                .getMedicine().getNameOfMedicine());
-
-        assertEquals(300, actualMedicineBoxSortedByNumberOfTabletsInPackage.get(3)
-                .getMedicine().getNumberOfTabletsInPackage());
-        assertEquals("AmiksunBox", actualMedicineBoxSortedByNumberOfTabletsInPackage.get(3)
-                .getMedicine().getNameOfMedicine());
-
-        assertEquals(400, actualMedicineBoxSortedByNumberOfTabletsInPackage.get(4)
-                .getMedicine().getNumberOfTabletsInPackage());
-        assertEquals("NovirunBox", actualMedicineBoxSortedByNumberOfTabletsInPackage.get(4)
-                .getMedicine().getNameOfMedicine());
+        List<MedicineBox> expectedMedicineBoxSortedByNumberOfTabletsInPackage = new ArrayList<>(Arrays.asList(
+                new MedicineBox(new DrugsWithoutPrescription("PenichulinBox", "America",
+                        TreatmentCategory.ANTIBIOTICS, 69.0, 100)),
+                new MedicineBox(new DrugsWithoutPrescription("AscorbinkaBox", "Germany",
+                        TreatmentCategory.VITAMINS, 70.0, 200)),
+                new MedicineBox(new DrugsWithoutPrescription("GrupicutronBox", "Poland",
+                        TreatmentCategory.ANALGESICS, 71.0, 300)),
+                new MedicineBox(new DrugsWithoutPrescription("AmiksunBox", "Poland",
+                        TreatmentCategory.ANTIVIRAL, 71.0, 300)),
+                new MedicineBox(new PrescriptionDrugs("NovirunBox", "Poland",
+                        TreatmentCategory.ANTIVIRAL, 72.0, 400))
+        ));
+        assertThat(actualMedicineBoxSortedByNumberOfTabletsInPackage, is(expectedMedicineBoxSortedByNumberOfTabletsInPackage));
     }
 
-//    SECOND WAY
-//
-//    @Test
-//    public void testSortByNumberOfTabletsInPackageAsc(){
-//
-//        PharmacyManager manager = new PharmacyManager();
-//        List<MedicineBox> actualMedicineBoxSortedByNumberOfTabletsInPackage = manager.sortByNumberOfTabletsInPackage(
-//                medicineBoxes, false);
-//        List<MedicineBox> expectedMedicineBoxSortedByNumberOfTabletsInPackage = new ArrayList<>(Arrays.asList(
-//                new MedicineBox(new DrugsWithoutPrescription("PenichulinBox", "America",
-//                TreatmentCategory.ANTIBIOTICS, 69.0, 100)),
-//                new MedicineBox(new DrugsWithoutPrescription("AscorbinkaBox", "Germany",
-//                TreatmentCategory.VITAMINS, 70.0, 200)),
-//                new MedicineBox(new DrugsWithoutPrescription("GrupicutronBox", "Poland",
-//                TreatmentCategory.ANALGESICS, 71.0, 300)),
-//                new MedicineBox(new DrugsWithoutPrescription("AmiksunBox", "Poland",
-//                TreatmentCategory.ANTIVIRAL, 71.0, 300)),
-//                new MedicineBox(new DrugsWithoutPrescription("NovirunBox", "Poland",
-//                TreatmentCategory.ANTIVIRAL, 72.0, 400))
-//        ));
-//        assertThat(actualMedicineBoxSortedByNumberOfTabletsInPackage, is(expectedMedicineBoxSortedByNumberOfTabletsInPackage));
-//    }
-
-
+    @Test
+    public void equalsAndHashCodeTest() {
+        EqualsVerifier.simple().forClass(MedicineBox.class).verify();
+    }
 
     @Test
     void testSortByPricePerPackageDesc(){
@@ -213,18 +183,39 @@ class PharmacyManagerTest {
     @Test
     public void testWriteToCSVFileMethod () {
         try (FileReader expectedFileReader = new FileReader(
-                "C:\\Users\\Dell\\IdeaProjects\\LabJava2\\src\\main\\resources\\expectedResult.csv");
+                "expectedResult.csv");
              BufferedReader expectedBufferedReader = new BufferedReader(expectedFileReader);
              FileReader actualFileReader = new FileReader(
-                     "C:\\Users\\Dell\\IdeaProjects\\LabJava2\\src\\main\\resources\\result.csv");
+                     "result.csv");
              BufferedReader actualBufferedReader = new BufferedReader(actualFileReader)) {
+
             MedicineBoxWriter.writeToCSVFile(medicineBoxes);
-            Assertions.assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
-            Assertions.assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
-            Assertions.assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
-            Assertions.assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
-            Assertions.assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
-            Assertions.assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
+
+            String line1 = expectedBufferedReader.readLine();
+            String line2 = actualBufferedReader.readLine();
+            boolean areTwoLinesEqual = true;
+            int numberOfLine = 1;
+
+            while (line1 != null || line2 != null) {
+                if(line1 == null || line2 == null) {
+                    areTwoLinesEqual = false;
+                    break;
+                }
+                else if(!line1.equalsIgnoreCase(line2)) {
+                    areTwoLinesEqual = false;
+                    break;
+                }
+
+                line1 = expectedBufferedReader.readLine();
+                line2 = actualBufferedReader.readLine();
+                numberOfLine++;
+            }
+
+            if(areTwoLinesEqual) {
+                assertEquals(expectedBufferedReader.readLine(), actualBufferedReader.readLine());
+            } else {
+                fail("Two files have different content. They differ at line " + numberOfLine);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,6 +1,6 @@
-Name, Origin, TreatmentCategory, Price, NumbersOfTablets
-PenichulinBox,America,ANTIBIOTICS,69.0,100
-AscorbinkaBox,Germany,VITAMINS,70.0,200
-GrupicutronBox,Poland,ANALGESICS,71.0,300
-AmiksunBox,Poland,ANTIVIRAL,71.0,300
-NovirunBox,Poland,ANTIVIRAL,72.0,400
+Name, Origin, Treatment Category, Price, Numbers of Tablets, permission required
+PenichulinBox,America,ANTIBIOTICS,69.0,100,false
+AscorbinkaBox,Germany,VITAMINS,70.0,200,false
+GrupicutronBox,Poland,ANALGESICS,71.0,300,false
+AmiksunBox,Poland,ANTIVIRAL,71.0,300,false
+NovirunBox,Poland,ANTIVIRAL,72.0,400,true
