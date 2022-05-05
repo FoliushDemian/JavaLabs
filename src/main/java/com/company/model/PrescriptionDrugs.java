@@ -2,24 +2,24 @@ package com.company.model;
 
 import java.util.Objects;
 
-public class PrescriptionDrugs extends Medicine{
+public class PrescriptionDrugs extends Medicine {
 
     private boolean permissionRequired = true;
 
     public PrescriptionDrugs(String nameOfMedicine, String origin,
                               TreatmentCategory treatmentCategory,
                               double priceInUahPerPackage,
-                              Integer numberOfTabletsInPackage){
+                              Integer numberOfTabletsInPackage) {
         super(nameOfMedicine, origin, treatmentCategory, priceInUahPerPackage, numberOfTabletsInPackage);
     }
 
     @Override
-    public String getHeaders(){
+    public String getHeaders() {
         return super.getHeaders() + ", permission required";
     }
 
     @Override
-    public String toCSV(){
+    public String toCSV() {
         return super.toCSV() + "," + this.permissionRequired;
     }
 

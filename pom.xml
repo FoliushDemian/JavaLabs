@@ -28,13 +28,6 @@
             <version>3.10</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs</artifactId>
-            <version>4.6.0</version>
-        </dependency>
-
         <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
@@ -151,4 +144,6 @@
         </plugins>
     </reporting>
 </project>
+
+
 

@@ -22,8 +22,8 @@ public class PharmacyManager {
      public List<MedicineBox> findMedicineInRange(double lowRange, double highRange, List<MedicineBox> medicineBoxes) {
           return medicineBoxes
                   .stream()
-                  .filter(medicineBox -> medicineBox.getMedicine().getPriceInUahPerPackage() >= lowRange &&
-                          medicineBox.getMedicine().getPriceInUahPerPackage() <= highRange)
+                  .filter(medicineBox -> medicineBox.getMedicine().getPriceInUahPerPackage() >= lowRange
+                          && medicineBox.getMedicine().getPriceInUahPerPackage() <= highRange)
                   .collect(Collectors.toList());
      }
 
@@ -32,7 +32,7 @@ public class PharmacyManager {
                   .sorted(Comparator.comparing(medicineBox -> medicineBox.getMedicine().getNumberOfTabletsInPackage()))
                   .collect(Collectors.toList());
 
-          if(descendingSort){
+          if(descendingSort) {
                Collections.reverse(sortedMedicineBoxesInAscendingByNumberOfTablets);
           }
 
@@ -40,12 +40,12 @@ public class PharmacyManager {
      }
 
 
-     public List<MedicineBox> sortByPriceInUahPerPackage(List<MedicineBox> medicineBoxes, boolean descendingSort){
+     public List<MedicineBox> sortByPriceInUahPerPackage(List<MedicineBox> medicineBoxes, boolean descendingSort) {
           List<MedicineBox> sortedMedicineBoxesInAscendingByPriceInUahPerPackage =  medicineBoxes.stream()
                   .sorted(Comparator.comparing(medicineBox -> medicineBox.getMedicine().getPriceInUahPerPackage()))
                   .collect(Collectors.toList());
 
-          if(descendingSort){
+          if(descendingSort) {
                Collections.reverse(sortedMedicineBoxesInAscendingByPriceInUahPerPackage);
           }
 
