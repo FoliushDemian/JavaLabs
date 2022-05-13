@@ -33,7 +33,7 @@ public class TextEditor {
     public String substituteNumbersForCorrespondingLetters() {
         String text = getTextFromFile();
         assert text != null;
-        String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+        String[] letters = {"Z", "A", "B", "C", "D", "E", "F", "G", "H", "I"};
         Pattern pattern = Pattern.compile("\\d");
         Matcher matcher = pattern.matcher(text);
         text = matcher.replaceAll((match) -> {

@@ -10,15 +10,15 @@ public class TextEditorTest {
     void testSubstituteNumbersForCorrespondingLetters() {
         TextEditor text = new TextEditor("src/main/resources/randomInputOfText.txt");
 
-        StringBuilder sb = new StringBuilder("B, BCDEFB B HGF B,BCD G F B.\n");
-        sb.append("C BCDEFB C. HGF C G F C.\n");
-        sb.append("D BCDEFB D HGF D G F D.\n");
-        sb.append("E BCDEFB E HGF E G F E.\n");
-        sb.append("F BCDEFB F HGF F G F F.\n");
-        sb.append("G BCDEFB G HGF G G F G.\n");
-        sb.append("H BCDEFB H HGF H G F H.\n");
-        sb.append("I, BCDEFB. I HGF I I, I, I. I,I F I?\n");
-        sb.append("J BCDEFB J HGF J G F J!\n");
+        StringBuilder sb = new StringBuilder("A, ABCDEA A GFE A,ABC F E A.Z\n");
+        sb.append("B ABCDEA B. GFE B F E B.\n");
+        sb.append("C ABCDEA C GFE C F E C.\n");
+        sb.append("D ABCDEA D GFE D F E D.\n");
+        sb.append("E ABCDEA E GFE E F E E.\n");
+        sb.append("F ABCDEA F GFE F F E F.\n");
+        sb.append("G ABCDEA G GFE G F E G.\n");
+        sb.append("H, ABCDEA. H GFE H H, H, H. H,H E H?\n");
+        sb.append("I ABCDEA I GFE I F E I!\n");
         String expectedOutputOfResult = sb.toString();
 
         String actualOutputOfResult = text.substituteNumbersForCorrespondingLetters();
