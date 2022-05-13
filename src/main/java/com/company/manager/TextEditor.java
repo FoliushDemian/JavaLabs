@@ -33,13 +33,13 @@ public class TextEditor {
     public String substituteNumbersForCorrespondingLetters() {
         String text = getTextFromFile();
         assert text != null;
-        String[] numerals = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
-        Pattern pat = Pattern.compile("\\d");
-        Matcher m = pat.matcher(text);
-        text = m.replaceAll((match) -> {
+        String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+        Pattern pattern = Pattern.compile("\\d");
+        Matcher matcher = pattern.matcher(text);
+        text = matcher.replaceAll((match) -> {
             String noToReplace = match.group();
             int n = Integer.parseInt(noToReplace);
-            return numerals[n];
+            return letters[n];
         });
         return text;
     }
