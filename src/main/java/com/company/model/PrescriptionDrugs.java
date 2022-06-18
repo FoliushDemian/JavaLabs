@@ -20,7 +20,7 @@ public class PrescriptionDrugs extends Medicine {
 
     @Override
     public String toCSV() {
-        return super.toCSV() + "," + this.permissionRequired;
+        return super.toCSV() + "," + permissionRequired;
     }
 
     @Override

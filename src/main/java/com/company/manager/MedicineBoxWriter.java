@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class MedicineBoxWriter {
-    public static void writeToCSVFile(List<MedicineBox> medicineBoxes) throws IOException {
+    public static void writeToCSVFile(List<MedicineBox> medicineBoxes) {
         try (FileWriter fileWriter = new FileWriter("result.csv")) {
 
             String previousClassName = "";
