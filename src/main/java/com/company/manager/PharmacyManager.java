@@ -32,7 +32,7 @@ public class PharmacyManager {
                   .sorted(Comparator.comparing(medicineBox -> medicineBox.getMedicine().getNumberOfTabletsInPackage()))
                   .collect(Collectors.toList());
 
-          if(descendingSort) {
+          if (descendingSort) {
                Collections.reverse(sortedMedicineBoxesInAscendingByNumberOfTablets);
           }
 
