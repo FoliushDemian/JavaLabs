@@ -1,9 +1,16 @@
 package com.company.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
+
+@Entity
+@Table(name = "drugsWithoutPrescription")
 public class DrugsWithoutPrescription extends Medicine {
 
+    @Column(name = "permission_required", nullable = false)
     private boolean permissionRequired = false;
 
     public DrugsWithoutPrescription(String nameOfMedicine, String origin,
@@ -35,5 +42,13 @@ public class DrugsWithoutPrescription extends Medicine {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), permissionRequired);
+    }
+
+    public boolean isPermissionRequired() {
+        return permissionRequired;
+    }
+
+    public void setPermissionRequired(boolean permissionRequired) {
+        this.permissionRequired = permissionRequired;
     }
 }
