@@ -8,10 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
@@ -27,14 +24,15 @@ public class DrugsWithoutPrescriptionController {
         this.drugsWithoutPrescriptionService = drugsWithoutPrescriptionService;
     }
 
-    @GetMapping//
+    @GetMapping
     private List<DrugsWithoutPrescription> getAll() {
         return new LinkedList<>(drugs.values());
     }
 
     @GetMapping("/{id}")
-    private DrugsWithoutPrescription getById(@PathVariable("id") Integer id) {
-        return drugs.get(id);
+    private ResponseEntity<DrugsWithoutPrescription> getById(@PathVariable("id") Integer id) {
+        HttpStatus status = drugs.get(id) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+        return ResponseEntity.status(status).body(drugs.get(id));
     }
 
     @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -53,7 +51,7 @@ public class DrugsWithoutPrescriptionController {
         HttpStatus status = drugs.put(id, drugsWithoutPrescription) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
         drugsWithoutPrescription.setId(id);
 
-        return ResponseEntity.status(status).build();
+        return ResponseEntity.status(status).body(drugs.get(id));
     }
 
     @DeleteMapping("/delete/{id}")

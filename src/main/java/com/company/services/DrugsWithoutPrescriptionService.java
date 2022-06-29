@@ -5,15 +5,14 @@ import com.company.repository.DrugsWithoutPrescriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 
-@Service// показує шо то сервіс
+@Service
 public class DrugsWithoutPrescriptionService {
     private final DrugsWithoutPrescriptionRepository drugsWithoutPrescriptionRepository;
 
-    @Autowired// створить обєкт drugsWithoutPrescriptionRepository і запихає в контейнер
+    @Autowired
     public DrugsWithoutPrescriptionService(DrugsWithoutPrescriptionRepository drugsWithoutPrescriptionRepository) {
         this.drugsWithoutPrescriptionRepository = drugsWithoutPrescriptionRepository;
     }
@@ -30,7 +29,7 @@ public class DrugsWithoutPrescriptionService {
         return drugsWithoutPrescriptionRepository.findById(id).orElseThrow();
     }
 
-    @Transactional
+
     public void update(Integer id, String nameOfMedicine) {
         DrugsWithoutPrescription drugsWithoutPrescription = drugsWithoutPrescriptionRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException(id.toString() + "not found such object"));
